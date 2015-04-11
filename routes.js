@@ -201,7 +201,7 @@ router.get('/demo', function(req, res){
 });
 
 router.get('/login', function(req, res){
-  res.render('login', { user: JSON.stringify(req.user.username) });
+  res.render('login', { user: JSON.stringify(req.user.username).replace(/^"(.+)"$/,'$1') });
 });
 
 router.get('/logout', function(req, res){
