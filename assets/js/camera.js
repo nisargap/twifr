@@ -122,7 +122,7 @@
         dataType: 'json',
         success: function(response) {
             if(response.success) {
-                window.location = response.data.link;
+                window.location = '/recognize?img=' + response.data.link;
             }
         }
     });
