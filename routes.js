@@ -235,7 +235,7 @@ router.get('/', function(req, res){
 });
 
 router.get('/login', function(req, res){
-  var twitter = twitterAPICalc();
+  //var twitter = twitterAPICalc();
   var userData = '@' + JSON.stringify(req.user.username).replace(/^"(.+)"$/,'$1');
   req.session.user = userData;
   
