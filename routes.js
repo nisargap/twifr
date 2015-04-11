@@ -121,7 +121,7 @@ router.get('/recognize', function(req, res){
         if(body.images[0].candidates[0])
         {
           // {'message' : "Closest Match: " + JSON.stringify(closestCandidate)}
-          var closestCandidate = first(body.images[0].candidates[0]);
+          var closestCandidate = body.images[0].candidates[0][0];
           res.render('https://www.twitter.com/' + closestCandidate);
         }
         else
