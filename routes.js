@@ -16,8 +16,6 @@ var tws = new TwitterStrategy({
     callbackURL: "http://twitterfr.azurewebsites.net/auth/twitter/callback"
   },
   function(token, tokenSecret, profile, done) {
-     g_token = token;
-     g_tokenSecret = tokenSecret;
      process.nextTick(function () {
       
       // To keep the example simple, the user's Twitter profile is returned to
@@ -203,19 +201,7 @@ router.get('/', function(req, res){
 router.get('/login', function(req, res){
   var userData = '@' + JSON.stringify(req.user.username).replace(/^"(.+)"$/,'$1');
   req.session.user = userData;
-  tws.statuses("update", {
-        status: "Hello world!"
-    },
-    g_token,
-    g_tokenSecret,
-    function(error, data, response) {
-        if (error) {
-            // something went wrong 
-        } else {
-            // data contains the data sent by twitter 
-        }
-    }
-);
+  
   res.render('login', { user: userData, profile: req.user.photos[0].value.replace('_normal','')});
 });
 
