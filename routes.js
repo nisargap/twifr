@@ -12,13 +12,6 @@ var tws = new TwitterStrategy({
     consumerKey: "RRVoDZUDwyWn7vVrNqo02c7HQ",
     consumerSecret: "Wxy758B8OqVkfQbMcbWwyXx5oXcrT0Ibxgg8UT9b4Ok0bkevjP",
     callbackURL: "http://twitterfr.azurewebsites.net/auth/twitter/callback"
-  });
-var g_token;
-var g_tokenSecret;
-passport.use(new TwitterStrategy({
-    consumerKey: "RRVoDZUDwyWn7vVrNqo02c7HQ",
-    consumerSecret: "Wxy758B8OqVkfQbMcbWwyXx5oXcrT0Ibxgg8UT9b4Ok0bkevjP",
-    callbackURL: "http://twitterfr.azurewebsites.net/auth/twitter/callback"
   },
   function(token, tokenSecret, profile, done) {
      g_token = token;
@@ -31,8 +24,10 @@ passport.use(new TwitterStrategy({
       // and return that user instead.
       return done(null, profile);
     });
-  }
-));
+  });
+var g_token;
+var g_tokenSecret;
+passport.use(tws);
 
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
