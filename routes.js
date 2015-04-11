@@ -11,7 +11,7 @@ var passport = require('passport')
 passport.use(new TwitterStrategy({
     consumerKey: "RRVoDZUDwyWn7vVrNqo02c7HQ",
     consumerSecret: "Wxy758B8OqVkfQbMcbWwyXx5oXcrT0Ibxgg8UT9b4Ok0bkevjP",
-    callbackURL: "http://localhost:1337/auth/twitter/callback"
+    callbackURL: "http://twitterfr.azurewebsites.net/auth/twitter/callback"
   },
   function(token, tokenSecret, profile, done) {
     
