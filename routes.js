@@ -8,6 +8,8 @@ var router = express.Router();
 var cookieParser = require('cookie-parser');
 
 router.use(cookieParser());
+var g_token;
+var g_tokenSecret;
 var tws = new TwitterStrategy({
     consumerKey: "RRVoDZUDwyWn7vVrNqo02c7HQ",
     consumerSecret: "Wxy758B8OqVkfQbMcbWwyXx5oXcrT0Ibxgg8UT9b4Ok0bkevjP",
@@ -25,8 +27,6 @@ var tws = new TwitterStrategy({
       return done(null, profile);
     });
   });
-var g_token;
-var g_tokenSecret;
 passport.use(tws);
 
 // Passport session setup.
