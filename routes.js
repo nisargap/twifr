@@ -193,8 +193,8 @@ router.get('/delete', function(req, res){
 });
 
 router.get('/', function(req, res){
-  if(req.session){
-    console.log(req.session);
+  if(req.cookies.connect.sid){
+    res.redirect('/login');
   }
   res.render('index');
 });
