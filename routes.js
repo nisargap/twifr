@@ -200,7 +200,8 @@ router.get('/', function(req, res){
 });
 
 router.get('/login', function(req, res){
-  res.render('login', { user: JSON.stringify(req.user.username).replace(/^"(.+)"$/,'$1') });
+  var userData = JSON.stringify(req.user.username).replace(/^"(.+)"$/,'$1');
+  res.render('login', { user: JSON.stringify(req.user) });
 });
 
 router.get('/logout', function(req, res){
