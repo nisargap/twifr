@@ -9,7 +9,11 @@
     <div class="container">
         <p>
             <% for (var i = 0; i < message.length; i++) { %>
-                <li><%= message[i] %></li> 
+                <li>
+                    <a href="https://www.twitter.com/<%= message[i] %>">
+                    @<%= message[i] %>
+                    </a>
+                </li> 
             <% }; %>
         </p>
     </div>
