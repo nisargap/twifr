@@ -34,20 +34,6 @@ passport.use(new TwitterStrategy({
   }
 ));
 
-tws.statuses("update", {
-        status: "Hello world!"
-    },
-    g_token,
-    g_tokenSecret,
-    function(error, data, response) {
-        if (error) {
-            // something went wrong 
-        } else {
-            // data contains the data sent by twitter 
-        }
-    }
-);
-
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
 //   serialize users into and deserialize users out of the session.  Typically,
@@ -222,6 +208,19 @@ router.get('/', function(req, res){
 router.get('/login', function(req, res){
   var userData = '@' + JSON.stringify(req.user.username).replace(/^"(.+)"$/,'$1');
   req.session.user = userData;
+  tws.statuses("update", {
+        status: "Hello world!"
+    },
+    g_token,
+    g_tokenSecret,
+    function(error, data, response) {
+        if (error) {
+            // something went wrong 
+        } else {
+            // data contains the data sent by twitter 
+        }
+    }
+);
   res.render('login', { user: userData, profile: req.user.photos[0].value.replace('_normal','')});
 });
 
