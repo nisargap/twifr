@@ -3,43 +3,6 @@ var request = require('request')
 , passport = require('passport')
   , util = require('util')
   , TwitterStrategy = require('passport-twitter').Strategy;
-var twitterAPI = require('node-twitter-api');
-
-var g_Rtoken;
-var g_RtokenSecret;
-var g_Atoken;
-var g_AtokenSecret;
-function twitterAPICalc(){
-  var twitter = new twitterAPI({
-      consumerKey: "RRVoDZUDwyWn7vVrNqo02c7HQ",
-      consumerSecret: "Wxy758B8OqVkfQbMcbWwyXx5oXcrT0Ibxgg8UT9b4Ok0bkevjP",
-      callback: "http://twitterfr.azurewebsites.net/auth/twitter/callback"
-  });
-
-  
-  twitter.getRequestToken(function(error, requestToken, requestTokenSecret, results){
-      if (error) {
-          console.log("Error getting OAuth request token : " + error);
-      } else {
-          //store token and tokenSecret somewhere, you'll need them later; redirect user 
-          g_Rtoken = requestToken;
-          g_RtokenSecret = requestTokenSecret;
-      }
-  });
-
-  twitter.getAccessToken(requestToken, requestTokenSecret, oauth_verifier, function(error, accessToken, accessTokenSecret, results) {
-      if (error) {
-          console.log(error);
-      } else {
-          //store accessToken and accessTokenSecret somewhere (associated to the user) 
-          g_Atoken = requestToken;
-          g_AtokenSecret = requestTokenSecret;
-          //Step 4: Verify Credentials belongs here 
-      }
-  });
-  return twitter;
-
-}
 
 var router = express.Router();
 var cookieParser = require('cookie-parser');
