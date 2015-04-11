@@ -53,7 +53,7 @@ router.get('/auth/twitter', passport.authenticate('twitter'));
 // access was granted, the user will be logged in.  Otherwise,
 // authentication has failed.
 router.use('/auth/twitter/callback', 
-  passport.authenticate('twitter', { successRedirect: '/',
+  passport.authenticate('twitter', { successRedirect: '/login',
                                      failureRedirect: '/demo' }));
 
 var api_id = '8bb81d88';
@@ -198,5 +198,15 @@ router.get('/', function(req, res){
 
 router.get('/demo', function(req, res){
   res.render('demo');
-})
+});
+
+router.get('/login', function(req, res){
+  res.render('login', { user: req.user });
+});
+
+router.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
+
 module.exports = router;
