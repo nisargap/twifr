@@ -206,8 +206,8 @@ router.get('/login', function(req, res){
 });
 
 router.get('/logout', function(req, res){
+  req.session.user = null;
   req.logout();
-  req.session = null;
   res.redirect('/');
 });
 
