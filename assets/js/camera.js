@@ -101,18 +101,8 @@
       canvas.height = height;
       context.drawImage(video, 0, 0, width, height);
     
-      var dataURL = canvas.toDataURL('image/png');
-      // photo.setAttribute('src', data);
-
-      // var fs = require('fs');
-      // //var string = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==";
-      // var regex = /^data:.+\/(.+);base64,(.*)$/;
-      // var string = dataURL;
-      // var matches = string.match(regex);
-      // var ext = matches[1];
-      // var data = matches[2];
-      // var buffer = new Buffer(data, 'base64');
-      // fs.writeFileSync('data.' + ext, buffer);
+      var data = canvas.toDataURL('image/png');
+      photo.setAttribute('src', data);
     } else {
       clearphoto();
     }
