@@ -76,7 +76,7 @@ router.get('/recognize', function(req, res){
       body: "{  \"image\": \"" + imgURL + "\", \"threshold\" : \"0.40\", \"gallery_name\" : \"gallerytest1\" }"
       }, function (error, response, body) {
 
-      body = JSON.parse(body);
+      // body = JSON.parse(body);
       if(imgURL == null)
       {
         res.render('test', {'message' : 'no input specified'});
@@ -84,9 +84,12 @@ router.get('/recognize', function(req, res){
       else
       {
 
-        var closestCandidate = body.images[0].candidates[0];
+        // if(body != null)
 
-        res.render('test', {'message' : JSON.stringify(closestCandidate)});
+        // var closestCandidate = body.images[0].candidates[0];
+
+        // res.render('test', {'message' : JSON.stringify(closestCandidate)});
+        res.render('test', {'message' : body});
         
       }
     });
