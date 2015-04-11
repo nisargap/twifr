@@ -83,7 +83,9 @@ router.get('/enroll', function(req, res){
       }
     });
 });
-
+function first(obj) {
+    for (var a in obj) return a;
+}
 router.get('/recognize', function(req, res){
 
     var imgURL = req.query.img;
@@ -118,8 +120,9 @@ router.get('/recognize', function(req, res){
         }
         if(body.images[0].candidates[0])
         {
-          var closestCandidate = body.images[0].candidates[0];
-          res.render('test', {'message' : "Closest Match: " + JSON.stringify(closestCandidate)});
+          // {'message' : "Closest Match: " + JSON.stringify(closestCandidate)}
+          var closestCandidate = first(body.images[0].candidates[0]);
+          res.render('https://www.twitter.com/' + closestCandidate);
         }
         else
         {
