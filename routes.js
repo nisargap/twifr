@@ -193,7 +193,7 @@ router.get('/delete', function(req, res){
 });
 
 router.get('/', function(req, res){
-  if(req.session.user){
+  if(req.session){
     res.redirect('/login');
   }
   res.render('index');
