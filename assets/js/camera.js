@@ -103,6 +103,8 @@
     
       var data = canvas.toDataURL('image/png');
       photo.setAttribute('src', data);
+
+      alert(data);
     } else {
       clearphoto();
     }
