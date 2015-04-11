@@ -54,7 +54,7 @@ router.get('/auth/twitter', passport.authenticate('twitter'));
 // authentication has failed.
 router.use('/auth/twitter/callback', 
   passport.authenticate('twitter', { successRedirect: '/login',
-                                     failureRedirect: '/demo' }));
+                                     failureRedirect: '/' }));
 
 var api_id = '8bb81d88';
 var app_key = 'db8c243ee956d9de1ae8e824f87b6a01';
@@ -194,10 +194,6 @@ router.get('/delete', function(req, res){
 
 router.get('/', function(req, res){
   res.render('index');
-});
-
-router.get('/demo', function(req, res){
-  res.render('demo');
 });
 
 router.get('/login', function(req, res){
