@@ -193,6 +193,9 @@ router.get('/delete', function(req, res){
 });
 
 router.get('/', function(req, res){
+  if(req.session.user){
+    res.redirect('/login');
+  }
   res.render('index');
 });
 
