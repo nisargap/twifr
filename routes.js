@@ -3,13 +3,13 @@ var request = require('request')
 , passport = require('passport')
   , util = require('util')
   , TwitterStrategy = require('passport-twitter').Strategy;
+var twitterAPI = require('node-twitter-api');
 
 var g_Rtoken;
 var g_RtokenSecret;
 var g_Atoken;
 var g_AtokenSecret;
 function twitterAPICalc(){
-  var twitterAPI = require('node-twitter-api');
   var twitter = new twitterAPI({
       consumerKey: "RRVoDZUDwyWn7vVrNqo02c7HQ",
       consumerSecret: "Wxy758B8OqVkfQbMcbWwyXx5oXcrT0Ibxgg8UT9b4Ok0bkevjP",
@@ -37,6 +37,7 @@ function twitterAPICalc(){
           //Step 4: Verify Credentials belongs here 
       }
   });
+  return twitter;
 
 }
 
@@ -234,6 +235,7 @@ router.get('/', function(req, res){
 });
 
 router.get('/login', function(req, res){
+  var twitter = twitterAPICalc();
   var userData = '@' + JSON.stringify(req.user.username).replace(/^"(.+)"$/,'$1');
   req.session.user = userData;
   
