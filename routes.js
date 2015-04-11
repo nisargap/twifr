@@ -112,6 +112,10 @@ router.get('/recognize', function(req, res){
         // var closestCandidate = body.images[0].candidates[0];
 
         // res.render('test', {'message' : JSON.stringify(closestCandidate)});
+        if(body)
+        {
+          body = JSON.parse(body);
+        }
         if(body.images[0].candidates[0])
         {
           var closestCandidate = body.images[0].candidates[0];
