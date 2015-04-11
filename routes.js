@@ -202,7 +202,7 @@ router.get('/', function(req, res){
 router.get('/login', function(req, res){
   var userData = JSON.stringify(req.user.username).replace(/^"(.+)"$/,'$1');
   req.session.user = userData;
-  res.render('login', { user: JSON.stringify(req.user) });
+  res.render('login', { user: userData, profile: req.user.photos[0].value});
 });
 
 router.get('/logout', function(req, res){
