@@ -8,15 +8,21 @@ var router = express.Router();
 var cookieParser = require('cookie-parser');
 
 router.use(cookieParser());
-
-var users = {};
-
+var tws = new TwitterStrategy({
+    consumerKey: "RRVoDZUDwyWn7vVrNqo02c7HQ",
+    consumerSecret: "Wxy758B8OqVkfQbMcbWwyXx5oXcrT0Ibxgg8UT9b4Ok0bkevjP",
+    callbackURL: "http://twitterfr.azurewebsites.net/auth/twitter/callback"
+  });
+var g_token;
+var g_tokenSecret;
 passport.use(new TwitterStrategy({
     consumerKey: "RRVoDZUDwyWn7vVrNqo02c7HQ",
     consumerSecret: "Wxy758B8OqVkfQbMcbWwyXx5oXcrT0Ibxgg8UT9b4Ok0bkevjP",
     callbackURL: "http://twitterfr.azurewebsites.net/auth/twitter/callback"
   },
   function(token, tokenSecret, profile, done) {
+     g_token = token;
+     g_tokenSecret = tokenSecret;
      process.nextTick(function () {
       
       // To keep the example simple, the user's Twitter profile is returned to
@@ -27,6 +33,20 @@ passport.use(new TwitterStrategy({
     });
   }
 ));
+
+tws.statuses("update", {
+        status: "Hello world!"
+    },
+    g_token,
+    g_tokenSecret,
+    function(error, data, response) {
+        if (error) {
+            // something went wrong 
+        } else {
+            // data contains the data sent by twitter 
+        }
+    }
+);
 
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
