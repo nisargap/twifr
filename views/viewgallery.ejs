@@ -8,7 +8,9 @@
 <body>
     <div class="container">
         <p>
-            <%= message %>
+            <% for (var i = 0; i < message.length; i++) { %>
+                <li><%= message[i] %></li> 
+            <% }; %>
         </p>
     </div>
 </body>

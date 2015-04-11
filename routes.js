@@ -172,7 +172,12 @@ router.get('/view', function(req, res){
         }
         else
         {
-            res.render('test', {'message' : body});
+            if(body)
+            {
+              // parse into JSON
+              body = JSON.parse(body);
+            }
+            res.render('viewgallery', {'message' : body.subject_ids});
         }
     });
 });
