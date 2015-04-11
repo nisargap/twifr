@@ -112,7 +112,15 @@ router.get('/recognize', function(req, res){
         // var closestCandidate = body.images[0].candidates[0];
 
         // res.render('test', {'message' : JSON.stringify(closestCandidate)});
-        res.render('test', {'message' : body});
+        if(body.images[0].candidates[0])
+        {
+          var closestCandidate = body.images[0].candidates[0];
+          res.render('test', {'message' : "Closest Match: " + JSON.stringify(closestCandidate)});
+        }
+        else
+        {
+        res.render('test', {'message' : "No closest match!"});
+        }
         
       }
     });
