@@ -193,7 +193,7 @@ router.get('/delete', function(req, res){
 });
 
 router.get('/', function(req, res){
-  if(req.cookies){
+  if(req.session.user){
     res.redirect('/login');
   }
   res.render('index');
@@ -201,11 +201,13 @@ router.get('/', function(req, res){
 
 router.get('/login', function(req, res){
   var userData = JSON.stringify(req.user.username).replace(/^"(.+)"$/,'$1');
+  req.session.user = userData;
   res.render('login', { user: JSON.stringify(req.user) });
 });
 
 router.get('/logout', function(req, res){
   req.logout();
+  req.session = null;
   res.redirect('/');
 });
 
