@@ -1,12 +1,15 @@
 var express = require('express');
-var request = require('request');
+var request = require('request')
+, passport = require('passport')
+  , util = require('util')
+  , TwitterStrategy = require('passport-twitter').Strategy;
 
 var router = express.Router();
+var cookieParser = require('cookie-parser');
+
+router.use(cookieParser());
 
 var users = {};
-
-var passport = require('passport')
-  , TwitterStrategy = require('passport-twitter').Strategy;
 
 passport.use(new TwitterStrategy({
     consumerKey: "RRVoDZUDwyWn7vVrNqo02c7HQ",
@@ -14,9 +17,31 @@ passport.use(new TwitterStrategy({
     callbackURL: "http://twitterfr.azurewebsites.net/auth/twitter/callback"
   },
   function(token, tokenSecret, profile, done) {
-    
+     process.nextTick(function () {
+      
+      // To keep the example simple, the user's Twitter profile is returned to
+      // represent the logged-in user.  In a typical application, you would want
+      // to associate the Twitter account with a user record in your database,
+      // and return that user instead.
+      return done(null, profile);
+    });
   }
 ));
+
+// Passport session setup.
+//   To support persistent login sessions, Passport needs to be able to
+//   serialize users into and deserialize users out of the session.  Typically,
+//   this will be as simple as storing the user ID when serializing, and finding
+//   the user by ID when deserializing.  However, since this example does not
+//   have a database of user records, the complete Twitter profile is serialized
+//   and deserialized.
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
 
 // Redirect the user to Twitter for authentication.  When complete, Twitter
 // will redirect the user back to the application at
@@ -27,7 +52,7 @@ router.get('/auth/twitter', passport.authenticate('twitter'));
 // authentication process by attempting to obtain an access token.  If
 // access was granted, the user will be logged in.  Otherwise,
 // authentication has failed.
-router.get('/auth/twitter/callback', 
+router.use('/auth/twitter/callback', 
   passport.authenticate('twitter', { successRedirect: '/',
                                      failureRedirect: '/demo' }));
 

@@ -1,4 +1,5 @@
 var express = require('express');
+var passport = require('passport');
 var app = express();
 var session = require('express-session');
 var path = require('path');
@@ -9,6 +10,8 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(session({ secret: 'keyboard cat' }));
+app.use(passport.initialize());
+app.use(passport.session());
 // make bower_components act as a root folder
 app.use(express.static(path.join(__dirname, 'bower_components')));
 
