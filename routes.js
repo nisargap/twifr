@@ -222,12 +222,12 @@ router.get('/', function(req, res){
   res.render('index');
 });
 
-router.get('/login', function(req, res){
+router.get('/app', function(req, res){
   //var twitter = twitterAPICalc();
-  var userData = '@' + JSON.stringify(req.user.username).replace(/^"(.+)"$/,'$1');
+  //var userData = '@' + JSON.stringify(req.user.username).replace(/^"(.+)"$/,'$1');
   //req.session.user = userData;
   
-  res.render('login', { user: userData, profile: req.user.photos[0].value.replace('_normal','')});
+  res.render('login');
 });
 
 router.get('/logout', function(req, res){
