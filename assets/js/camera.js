@@ -109,22 +109,24 @@
          var img = document.getElementById('canvas').toDataURL().split(',')[1];
       }
 
-$.ajax({
-    url: 'https://api.imgur.com/3/image',
-    type: 'post',
-    headers: {
-        Authorization: 'Client-ID 67434fe07390df5'
-    },
-    data: {
-        image: img
-    },
-    dataType: 'json',
-    success: function(response) {
-        if(response.success) {
-            window.location = '/recognize?img=' + response.data.link;
-        }
-    }
-});
+      alert('img');
+
+// $.ajax({
+//     url: 'https://api.imgur.com/3/image',
+//     type: 'post',
+//     headers: {
+//         Authorization: 'Client-ID 67434fe07390df5'
+//     },
+//     data: {
+//         image: img
+//     },
+//     dataType: 'json',
+//     success: function(response) {
+//         if(response.success) {
+//             window.location = '/recognize?img=' + response.data.link;
+//         }
+//     }
+// });
     } else {
       clearphoto();
     }
