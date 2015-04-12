@@ -109,7 +109,7 @@
          var img = document.getElementById('canvas').toDataURL().split(',')[1];
       }
 
-      alert('img');
+      alert(img);
 
 // $.ajax({
 //     url: 'https://api.imgur.com/3/image',
