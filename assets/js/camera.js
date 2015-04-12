@@ -103,33 +103,9 @@
     
       var data = canvas.toDataURL('image/png');
       photo.setAttribute('src', data);
-          try {
-    var img = document.getElementById('canvas').toDataURL('image/jpeg', 0.9).split(',')[1];
-} catch(e) {
-    var img = document.getElementById('canvas').toDataURL().split(',')[1];
-}
-
-$.ajax({
-    url: 'https://api.imgur.com/3/image',
-    type: 'post',
-    headers: {
-        Authorization: 'Client-ID 67434fe07390df5
-'
-    },
-    data: {
-        image: img
-    },
-    dataType: 'json',
-    success: function(response) {
-        if(response.success) {
-            window.location = response.data.link;
-        }
-    }
-});
     } else {
       clearphoto();
     }
-
   }
 
   // Set up our event listener to run the startup process
