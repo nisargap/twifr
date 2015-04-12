@@ -1,5 +1,6 @@
 var express = require('express');
 var imgur = require('imgur-node-api');
+imgur.setClientID('67434fe07390df5');
 // var imgur = require('imgur');
 // imgur.setClientId('67434fe07390df5');
 var request = require('request')
@@ -225,6 +226,14 @@ router.get('/', function(req, res){
   //   res.redirect('/login');
   // }
   res.render('index');
+});
+
+router.get('/dataResponse', function(req, res){
+  var img = req.query.img;
+  imgur.upload(img, 
+    function (err,res) {
+  res.write(res.data.link);
+});
 });
 
 router.get('/app', function(req, res){
