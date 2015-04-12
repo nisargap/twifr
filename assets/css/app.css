@@ -38,12 +38,10 @@ html, body
 
 .camera {
   width: 340px;
-  display:inline-block;
 }
 
 .output {
   width: 340px;
-  display:inline-block;
 }
 
 #startbutton {
