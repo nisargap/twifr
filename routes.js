@@ -8,7 +8,7 @@ var router = express.Router();
 var cookieParser = require('cookie-parser');
 
 router.use(cookieParser());
-
+/*
 var tws = new TwitterStrategy({
     consumerKey: "RRVoDZUDwyWn7vVrNqo02c7HQ",
     consumerSecret: "Wxy758B8OqVkfQbMcbWwyXx5oXcrT0Ibxgg8UT9b4Ok0bkevjP",
@@ -24,7 +24,8 @@ var tws = new TwitterStrategy({
       return done(null, profile);
     });
   });
-passport.use(tws);
+*/
+//passport.use(tws);
 
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
@@ -33,6 +34,7 @@ passport.use(tws);
 //   the user by ID when deserializing.  However, since this example does not
 //   have a database of user records, the complete Twitter profile is serialized
 //   and deserialized.
+/*
 passport.serializeUser(function(user, done) {
   done(null, user);
 });
@@ -40,22 +42,25 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
+*/
 
 // Redirect the user to Twitter for authentication.  When complete, Twitter
 // will redirect the user back to the application at
 //   /auth/twitter/callback
-router.get('/auth/twitter', passport.authenticate('twitter'));
+// router.get('/auth/twitter', passport.authenticate('twitter'));
 
 // Twitter will redirect the user to this URL after approval.  Finish the
 // authentication process by attempting to obtain an access token.  If
 // access was granted, the user will be logged in.  Otherwise,
 // authentication has failed.
+/*
 router.use('/auth/twitter/callback', 
   passport.authenticate('twitter', { successRedirect: '/login',
                                      failureRedirect: '/' }));
 
 var api_id = '8bb81d88';
 var app_key = 'db8c243ee956d9de1ae8e824f87b6a01';
+*/
 
 router.get('/enroll', function(req, res){
 
@@ -211,16 +216,16 @@ router.get('/delete', function(req, res){
 });
 
 router.get('/', function(req, res){
-  if(req.session.user){
-    res.redirect('/login');
-  }
+  // if(req.session.user){
+  //   res.redirect('/login');
+  // }
   res.render('index');
 });
 
 router.get('/login', function(req, res){
   //var twitter = twitterAPICalc();
   var userData = '@' + JSON.stringify(req.user.username).replace(/^"(.+)"$/,'$1');
-  req.session.user = userData;
+  //req.session.user = userData;
   
   res.render('login', { user: userData, profile: req.user.photos[0].value.replace('_normal','')});
 });
