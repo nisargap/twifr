@@ -95,8 +95,10 @@
   // other changes before drawing it.
 
   function takepicture() {
+    alert("takepicture start");
     var context = canvas.getContext('2d');
     if (width && height) {
+      alert("first if");
       canvas.width = width;
       canvas.height = height;
       context.drawImage(video, 0, 0, width, height);
@@ -121,12 +123,14 @@
         },
         dataType: 'json',
         success: function(response) {
+            alert("got there");
             if(response.success) {
-                window.location = response.data.link;
+                alert(response.data.link);
             }
         }
     });
     } else {
+      alert("got here");
       clearphoto();
     }
   }
