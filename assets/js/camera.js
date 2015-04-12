@@ -3,7 +3,7 @@
   // width to the value defined here, but the height will be
   // calculated based on the aspect ratio of the input stream.
 
-  var width = 600;    // We will scale the photo width to this
+  var width = 320;    // We will scale the photo width to this
   var height = 0;     // This will be computed based on the input stream
 
   // |streaming| indicates whether or not we're currently streaming
@@ -110,22 +110,24 @@
           var img = document.getElementById('canvas').toDataURL().split(',')[1];
       }
 
-    $.ajax({
-        url: 'https://api.imgur.com/3/image',
-        type: 'post',
-        headers: {
-            Authorization: 'Client-ID 67434fe07390df5'
-        },
-        data: {
-            image: img
-        },
-        dataType: 'json',
-        success: function(response) {
-            if(response.success) {
-                window.location = '/recognize?img=' + response.data.link;
-            }
-        }
-    });
+      window.location('/dataResponse?img=' + img);
+
+    // $.ajax({
+    //     url: 'https://api.imgur.com/3/image',
+    //     type: 'post',
+    //     headers: {
+    //         Authorization: 'Client-ID 67434fe07390df5'
+    //     },
+    //     data: {
+    //         image: img
+    //     },
+    //     dataType: 'json',
+    //     success: function(response) {
+    //         if(response.success) {
+    //             window.location = '/recognize?img=' + response.data.link;
+    //         }
+    //     }
+    // });
     } else {
       clearphoto();
     }

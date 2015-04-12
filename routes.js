@@ -1,4 +1,6 @@
 var express = require('express');
+var imgur = require('imgur');
+imgur.setClientId('67434fe07390df5');
 var request = require('request')
 , passport = require('passport')
   , util = require('util')
@@ -232,11 +234,25 @@ router.get('/app', function(req, res){
   res.render('login');
 });
 
-router.get('/logout', function(req, res){
-  req.session.user = null;
-  req.cookies = null;
-  req.logout();
-  res.redirect('/');
+router.get('/dataResponse', function(req, res){
+
+  var img = req.query.img;
+  imgur.uploadBase64(img)
+    .then(function (json) {
+        res.write(json.data.link);
+    })
+    .catch(function (err) {
+        console.error(err.message);
+        res.end();
+    });
+
 });
+
+// router.get('/logout', function(req, res){
+//   req.session.user = null;
+//   req.cookies = null;
+//   req.logout();
+//   res.redirect('/');
+// });
 
 module.exports = router;
