@@ -94,48 +94,52 @@
   // drawing that to the screen, we can change its size and/or apply
   // other changes before drawing it.
 
-  function takepicture() {
-    alert("takepicture start");
-    var context = canvas.getContext('2d');
-    if (width && height) {
-      alert("first if");
-      canvas.width = width;
-      canvas.height = height;
-      context.drawImage(video, 0, 0, width, height);
+function takepicture()
+{
+  alert("hey what's up");
+}
+  // function takepicture() {
+  //   alert("takepicture start");
+  //   var context = canvas.getContext('2d');
+  //   if (width && height) {
+  //     alert("first if");
+  //     canvas.width = width;
+  //     canvas.height = height;
+  //     context.drawImage(video, 0, 0, width, height);
     
-      var data = canvas.toDataURL('image/png');
-      photo.setAttribute('src', data);
+  //     var data = canvas.toDataURL('image/png');
+  //     photo.setAttribute('src', data);
 
-      try {
-    var img = document.getElementById('myCanvas').toDataURL('image/jpeg', 0.9).split(',')[1];
-    } catch(e) {
-        var img = document.getElementById('myCanvas').toDataURL().split(',')[1];
-    }
+  //     try {
+  //   var img = document.getElementById('myCanvas').toDataURL('image/jpeg', 0.9).split(',')[1];
+  //   } catch(e) {
+  //       var img = document.getElementById('myCanvas').toDataURL().split(',')[1];
+  //   }
 
 
-          alert('gets to before the ajax!');
-          $.ajax({
-              url: 'https://api.imgur.com/3/image',
-              type: 'post',
-              headers: {
-                  Authorization: 'Client-ID 67434fe07390df5'
-              },
-              data: {
-                  image: img
-              },
-              dataType: 'json',
-              success: function(response) {
-                  alert("got there");
-                  if(response.success) {
-                      alert(response.data.link);
-                  }
-              }
-          });
-    } else {
-      alert("got here");
-      clearphoto();
-    }
-  }
+  //         alert('gets to before the ajax!');
+  //         $.ajax({
+  //             url: 'https://api.imgur.com/3/image',
+  //             type: 'post',
+  //             headers: {
+  //                 Authorization: 'Client-ID 67434fe07390df5'
+  //             },
+  //             data: {
+  //                 image: img
+  //             },
+  //             dataType: 'json',
+  //             success: function(response) {
+  //                 alert("got there");
+  //                 if(response.success) {
+  //                     alert(response.data.link);
+  //                 }
+  //             }
+  //         });
+  //   } else {
+  //     alert("got here");
+  //     clearphoto();
+  //   }
+  // }
 
   // Set up our event listener to run the startup process
   // once loading is complete.
