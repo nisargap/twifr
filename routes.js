@@ -234,21 +234,6 @@ router.get('/app', function(req, res){
   res.render('login');
 });
 
-router.get('/dataResponse', function(req, res){
-
-  var img = req.query.img;
-  // imgur.uploadBase64(img)
-  //   .then(function (json) {
-  //       res.write(json.data.link);
-  //   })
-  //   .catch(function (err) {
-  //       console.error(err.message);
-  //       res.end();
-  //   });
-  res.write(img);
-
-});
-
 // router.get('/logout', function(req, res){
 //   req.session.user = null;
 //   req.cookies = null;
