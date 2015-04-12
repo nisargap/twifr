@@ -1,6 +1,6 @@
 var express = require('express');
-var imgur = require('imgur');
-imgur.setClientId('67434fe07390df5');
+// var imgur = require('imgur');
+// imgur.setClientId('67434fe07390df5');
 var request = require('request')
 , passport = require('passport')
   , util = require('util')
