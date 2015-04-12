@@ -103,13 +103,10 @@
     
       var data = canvas.toDataURL('image/png');
       photo.setAttribute('src', data);
-    } else {
-      clearphoto();
-    }
-    try {
-    var img = document.getElementById('myCanvas').toDataURL('image/jpeg', 0.9).split(',')[1];
+          try {
+    var img = document.getElementById('canvas').toDataURL('image/jpeg', 0.9).split(',')[1];
 } catch(e) {
-    var img = document.getElementById('myCanvas').toDataURL().split(',')[1];
+    var img = document.getElementById('canvas').toDataURL().split(',')[1];
 }
 
 $.ajax({
@@ -129,6 +126,10 @@ $.ajax({
         }
     }
 });
+    } else {
+      clearphoto();
+    }
+
   }
 
   // Set up our event listener to run the startup process
