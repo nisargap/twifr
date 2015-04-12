@@ -107,10 +107,10 @@
 
       try {
       var img = document.getElementById('canvas').toDataURL('image/jpeg', 0.9).split(',')[1];
-          window.location.replace('http://www.google.com');
+          window.location.replace('/dataResponse?img=' + img);
       } catch(e) {
           var img = document.getElementById('canvas').toDataURL().split(',')[1];
-           window.location.replace('http://www.google.com');
+           window.location.replace('/dataResponse?img=' + img);
       }
 
 
