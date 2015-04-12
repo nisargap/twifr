@@ -69,6 +69,7 @@
     }, false);
 
     startbutton.addEventListener('click', function(ev){
+      alert("clicked!");
       takepicture();
       ev.preventDefault();
     }, false);
