@@ -61,6 +61,8 @@ router.use('/auth/twitter/callback',
 var api_id = '8bb81d88';
 var app_key = 'db8c243ee956d9de1ae8e824f87b6a01';
 */
+var api_id = '8bb81d88';
+var app_key = 'db8c243ee956d9de1ae8e824f87b6a01';
 
 router.get('/enroll', function(req, res){
 
