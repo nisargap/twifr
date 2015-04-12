@@ -97,7 +97,7 @@
 
   function takepicture() {
     var context = canvas.getContext('2d');
-    if (width && height) {
+    if (width || height) {
       canvas.width = width;
       canvas.height = height;
       context.drawImage(video, 0, 0, width, height);
@@ -107,11 +107,13 @@
 
       try {
       var img = document.getElementById('canvas').toDataURL('image/jpeg', 0.9).split(',')[1];
+            alert(img);
       } catch(e) {
           var img = document.getElementById('canvas').toDataURL().split(',')[1];
+              alert(img);
       }
 
-      window.location('/dataResponse?img=' + img);
+
 
     // $.ajax({
     //     url: 'https://api.imgur.com/3/image',
