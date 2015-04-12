@@ -237,14 +237,15 @@ router.get('/app', function(req, res){
 router.get('/dataResponse', function(req, res){
 
   var img = req.query.img;
-  imgur.uploadBase64(img)
-    .then(function (json) {
-        res.write(json.data.link);
-    })
-    .catch(function (err) {
-        console.error(err.message);
-        res.end();
-    });
+  // imgur.uploadBase64(img)
+  //   .then(function (json) {
+  //       res.write(json.data.link);
+  //   })
+  //   .catch(function (err) {
+  //       console.error(err.message);
+  //       res.end();
+  //   });
+  res.write(img);
 
 });
 
