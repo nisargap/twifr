@@ -107,30 +107,29 @@
 
       try {
       var img = document.getElementById('canvas').toDataURL('image/jpeg', 0.9).split(',')[1];
-          window.location.replace('/dataResponse?img=' + img);
+      
       } catch(e) {
           var img = document.getElementById('canvas').toDataURL().split(',')[1];
-           window.location.replace('/dataResponse?img=' + img);
       }
 
 
 
-    // $.ajax({
-    //     url: 'https://api.imgur.com/3/image',
-    //     type: 'post',
-    //     headers: {
-    //         Authorization: 'Client-ID 67434fe07390df5'
-    //     },
-    //     data: {
-    //         image: img
-    //     },
-    //     dataType: 'json',
-    //     success: function(response) {
-    //         if(response.success) {
-    //             window.location = '/recognize?img=' + response.data.link;
-    //         }
-    //     }
-    // });
+    $.ajax({
+        url: 'https://api.imgur.com/3/image',
+        type: 'post',
+        headers: {
+            Authorization: 'Client-ID 67434fe07390df5'
+        },
+        data: {
+            image: img
+        },
+        dataType: 'json',
+        success: function(response) {
+            if(response.success) {
+                window.location.href = '/recognize?img=' + response.data.link;
+            }
+        }
+    });
     } else {
       clearphoto();
     }
