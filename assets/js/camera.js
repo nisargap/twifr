@@ -69,24 +69,7 @@
     }, false);
 
     startbutton.addEventListener('click', function(ev){
-      alert("clicked!");
-      var img = takepicture();
-       $.ajax({
-        url: 'https://api.imgur.com/3/image',
-        type: 'post',
-        headers: {
-            Authorization: 'Client-ID 67434fe07390df5'
-        },
-        data: {
-            image: img
-        },
-        dataType: 'json',
-        success: function(response) {
-            if(response.success) {
-                window.location.href = '/recognize?img=' + response.data.link;
-            }
-        }
-      });
+      takepicture();
       ev.preventDefault();
     }, false);
     
@@ -113,7 +96,7 @@
 
   function takepicture() {
     var context = canvas.getContext('2d');
-    if (width || height) {
+    if (width && height) {
       canvas.width = width;
       canvas.height = height;
       context.drawImage(video, 0, 0, width, height);
@@ -121,17 +104,22 @@
       var data = canvas.toDataURL('image/png');
       photo.setAttribute('src', data);
 
-      try {
-      var img = document.getElementById('canvas').toDataURL('image/jpeg', 0.9).split(',')[1];
+        $.ajax({
+          url: "https://api.imgur.com/3/upload",
+          type: "POST",
+          datatype: "json",
+          data: {'image': data,
+                 'type': 'base64'},
+          success: function(response) {
 
-      return img;
-      
-      } catch(e) {
-          var img = document.getElementById('canvas').toDataURL().split(',')[1];
-
-          return img;
-      }
-
+                      window.location.href(response.data.link);
+          }, error: function() {
+                  alert("Error while uploading...");
+          }
+          beforeSend: function (xhr) {
+              xhr.setRequestHeader("Authorization", "Client-ID " + "67434fe07390df5");
+          }
+      });
     } else {
       clearphoto();
     }
