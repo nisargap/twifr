@@ -1,4 +1,5 @@
 var express = require('express');
+var imgur = require('imgur');
 // var imgur = require('imgur');
 // imgur.setClientId('67434fe07390df5');
 var request = require('request')
