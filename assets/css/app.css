@@ -21,13 +21,15 @@ html, body
 #video {
   border: 1px solid black;
   box-shadow: 2px 2px 3px black;
-  width:400px;
+  width:320px;
+  height:240px;
 }
 
 #photo {
   border: 1px solid black;
   box-shadow: 2px 2px 3px black;
-  width: 400px;
+  width:320px;
+  height:240px;
 }
 
 #canvas {
@@ -35,11 +37,13 @@ html, body
 }
 
 .camera {
-  width: 400px;
+  width: 340px;
+  display:inline-block;
 }
 
 .output {
-  width: 400px;
+  width: 340px;
+  display:inline-block;
 }
 
 #startbutton {
