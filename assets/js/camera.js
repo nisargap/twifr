@@ -93,25 +93,6 @@
   // format data URL. By drawing it on an offscreen canvas and then
   // drawing that to the screen, we can change its size and/or apply
   // other changes before drawing it.
-  function ajaxRequest(img)
-  {
-      $.ajax({
-      url: 'https://api.imgur.com/3/image',
-      type: 'post',
-      headers: {
-          Authorization: 'Client-ID 67434fe07390df5'
-      },
-      data: {
-          image: img
-      },
-      dataType: 'json',
-      success: function(response) {
-          if(response.success) {
-              window.location = '/recognize?img=' + response.data.link;
-          }
-      }
-      });
-  }
   function takepicture() {
     var context = canvas.getContext('2d');
     if (width && height) {
@@ -129,7 +110,22 @@
 
       //alert(img);
 
-      ajaxRequest(img);
+      $.ajax({
+      url: 'https://api.imgur.com/3/image',
+      type: 'post',
+      headers: {
+          Authorization: 'Client-ID 67434fe07390df5'
+      },
+      data: {
+          image: img
+      },
+      dataType: 'json',
+      success: function(response) {
+          if(response.success) {
+              window.location = '/recognize?img=' + response.data.link;
+          }
+      }
+      });
     } else {
       clearphoto();
     }
