@@ -37,11 +37,11 @@ html, body
 }
 
 .camera {
-  width: 340px;
+  width: 60%;
 }
 
 .output {
-  width: 340px;
+  width: 60%;
 }
 
 #startbutton {
