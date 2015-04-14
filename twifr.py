@@ -3,8 +3,8 @@
 from twython import Twython
 from twython import TwythonStreamer
 import requests
-APP_KEY = 'n95GkESGweTQ7g3CvPgOJkhvp'
-APP_SECRET = 'Liaxutu48kXlXknubCgRLdkyVS3Ry37XkT8KCy4qKqKuybn35y'
+
+# APP_KEY and APP_SECRET removed for security
 
 twitter = Twython(APP_KEY, APP_SECRET)
 
