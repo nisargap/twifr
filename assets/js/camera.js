@@ -114,7 +114,7 @@
       url: 'https://api.imgur.com/3/image',
       type: 'post',
       headers: {
-          Authorization: 'Client-ID 67434fe07390df5'
+          Authorization: 'Client-ID CLIENT_ID has been removed for security'
       },
       data: {
           image: img
